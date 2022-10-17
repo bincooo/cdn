@@ -30,7 +30,7 @@ if (screen.width >= 768) {
 		loadExternalResource(live2d_path + "live2d.min.js", "js"),
 		loadExternalResource(live2d_path + "tips.js", "js")
 	]).then(() => {
-		initWidget({
+		init({
 			waifuPath: live2d_path + "tips.json",
 			cdnPath: "https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/"
 		});
