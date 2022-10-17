@@ -32,7 +32,7 @@ if (screen.width >= 768) {
 	]).then(() => {
 		init({
 			waifuPath: live2d_path + "tips.json",
-			cdnPath: "https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/"
+			cdnPath: "https://gitee.com/mirrors_fghrsh/live2d_api/raw/master/"
 		});
 	});
 }
