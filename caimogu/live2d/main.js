@@ -1,5 +1,5 @@
 // 注意：live2d_path 参数应使用绝对路径
-const live2d_path = "https://fastly.jsdelivr.net/gh/medlar01/cdn@latest/caimogu/live2d/";
+const live2d_path = "./";
 
 // 封装异步加载资源的方法
 function loadExternalResource(url, type) {
