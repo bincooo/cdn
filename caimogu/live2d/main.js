@@ -32,7 +32,8 @@ if (screen.width >= 768) {
 	]).then(() => {
 		init({
 			waifuPath: live2d_path + "tips.json",
-			cdnPath: "https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/"
+			//cdnPath: "https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/"
+			cdnPath: "https://medlar01.github.io/cdn/caimogu/live2d/api/"
 		});
 	});
 }
