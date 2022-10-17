@@ -33,7 +33,7 @@ if (screen.width >= 768) {
 		init({
 			waifuPath: live2d_path + "tips.json",
 			//cdnPath: "https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/"
-			cdnPath: "https://fastly.jsdelivr.net/gh/medlar01/cdn@latest/caimogu/live2d/api/"
+			cdnPath: live2d_path + "api/"
 		});
 	});
 }
