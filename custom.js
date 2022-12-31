@@ -10,7 +10,7 @@
           x: position.left + 19,
           y: position.top + 19
         })
-        clearInterval(intervalId)
+        //clearInterval(intervalId)
       }
     }
   }, 1200)
