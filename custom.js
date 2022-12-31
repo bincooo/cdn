@@ -5,7 +5,7 @@
     if (document.body.hasAttribute('data-position')) {
       const jsonString = document.body.getAttribute('data-position')
       const position = JSON.parse(jsonString)
-      if (captchaSolverCall) {
+      if (window.captchaSolverCall) {
         captchaSolverCall({
           x: position.left + 19,
           y: position.top + 19
