@@ -2,7 +2,7 @@
   'use strict'
   let intervalId = null
   intervalId = setInterval(() => {
-    if (document.body.hasAttribute(data-position)) {
+    if (document.body.hasAttribute('data-position')) {
       const jsonString = document.body.getAttribute('data-position')
       cosnt position = JSON.parse(jsonString)
       if (captchaSolverCall) {
