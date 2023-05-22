@@ -41,7 +41,7 @@ let _c = {
 
 
 const undef = undefined
-const baseUrl = "https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.24/alist-skin"
+const baseUrl = "https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.25/alist-skin"
 // 加载jq
 function load(id, el, props = {}, callback = () => {}) {
     if (id && !!document.querySelector("#" + id)) {
