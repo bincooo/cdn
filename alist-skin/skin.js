@@ -1,3 +1,6 @@
+const undef = undefined
+const baseUrl = "https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev1/alist-skin"
+console.log(location)
 let _c = {
     motto: "书山有路勤为径，学海无崖苦作舟。",
     menus: [
@@ -40,8 +43,7 @@ let _c = {
 
 
 
-const undef = undefined
-const baseUrl = "https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.25/alist-skin"
+
 // 加载jq
 function load(id, el, props = {}, callback = () => {}) {
     if (id && !!document.querySelector("#" + id)) {
