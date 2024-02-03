@@ -3,7 +3,7 @@ body {
 }
 
 body::after {
-    background-image: url(https://article.biliimg.com/bfs/article/5c6bf27ad4b7f055e21099dea325dc3a8255bb5c.jpg);
+    background-image: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.23/alist-skin/background.jpg);
     content: "";
     background-repeat: no-repeat;
     background-position: center;
