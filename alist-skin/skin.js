@@ -111,7 +111,7 @@ function ready() {
                 const data = _c.menus[idx]
                 html += `<span class=menu data-idx=${idx}>${data.name}</span>`
                 if (idx != _c.menus.length - 1) {
-                    html += "<span>|<span>"
+                    html += "<span>|</span>"
                 }
             }
             return html
