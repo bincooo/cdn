@@ -1,5 +1,5 @@
 const undef = undefined
-const baseUrl = "https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev3/alist-skin"
+const baseUrl = "https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev4/alist-skin"
 console.log(location)
 let _c = {
     motto: "书山有路勤为径，学海无崖苦作舟。",
