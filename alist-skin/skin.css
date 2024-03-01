@@ -1,9 +1,9 @@
 * {
-    cursor: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev6/alist-skin/cursor.ico), auto;
+    cursor: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev7/alist-skin/cursor.ico), auto;
 }
 
 body::after {
-    background-image: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev6/alist-skin/background.jpg);
+    background-image: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev7/alist-skin/background.jpg);
     content: "";
     background-repeat: no-repeat;
     background-position: center;
@@ -119,7 +119,7 @@ body::after {
 .hope-c-PJLV-ikoJJtX-css:hover, .hope-c-PJLV-ikoJJtX-css[data-hover] {
     transform: unset;
     color: #000000;
-    background-color: #f7f9fc;
+    background-color: #ededed;
 }
 
 .hope-c-PJLV .hope-c-PJLV-ikSuVsl-css {
