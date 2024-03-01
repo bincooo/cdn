@@ -1,9 +1,9 @@
-body {
-    cursor: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev4/alist-skin/cursor.ico), auto;
+* {
+    cursor: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev5/alist-skin/cursor.ico), auto;
 }
 
 body::after {
-    background-image: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev4/alist-skin/background.jpg);
+    background-image: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev5/alist-skin/background.jpg);
     content: "";
     background-repeat: no-repeat;
     background-position: center;
@@ -73,6 +73,10 @@ body::after {
 
 .header .title > .motto {
     font-size: 13px;
+}
+
+.hope-container .hope-c-PJLV-igScBhH-css, .hope-container .hope-c-PJLV-iiuDLME-css {
+    background-color: #202425d4;
 }
 
 .hope-container .hope-c-PJLV-idBSAKG-css, .hope-container .hope-c-PJLV-iGhSbf-css  {
