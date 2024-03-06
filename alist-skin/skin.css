@@ -79,7 +79,7 @@ body::after {
     font-size: 13px;
 }
 
-.hope-container .hope-c-PJLV-igScBhH-css, .hope-container .hope-c-PJLV-iiuDLME-css {
+.hope-container .hope-c-PJLV-igScBhH-css, .hope-container .hope-c-PJLV-ikSuVsl-css {
     background-color: #ffffffb5;
 }
 
@@ -93,6 +93,10 @@ body::after {
 
 #menus > div {
     padding: 0 12px;
+}
+
+.hope-c-PJLV-idaeksS-css {
+    background-color: unset;
 }
 
 .nav.hope-breadcrumb {
