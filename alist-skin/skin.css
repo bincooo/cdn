@@ -1,5 +1,5 @@
 * {
-    cursor: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev8/alist-skin/cursor.ico), auto;
+    cursor: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev9/alist-skin/cursor.ico), auto;
 }
 
 html {
@@ -7,7 +7,7 @@ html {
 }
 
 body::after {
-    background-image: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev8/alist-skin/background.jpg);
+    background-image: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev9/alist-skin/background.jpg);
     content: "";
     background-repeat: no-repeat;
     background-position: center;
