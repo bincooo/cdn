@@ -1,5 +1,5 @@
 const undef = undefined
-const baseUrl = "https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev10/alist-skin"
+const baseUrl = "https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev11/alist-skin"
 console.log(location)
 let _c = {
     motto: "书山有路勤为径，学海无崖苦作舟。",
@@ -38,10 +38,6 @@ let _c = {
         aria2: false
     }
 }
-
-
-
-
 
 
 // 加载jq
@@ -140,7 +136,7 @@ function ready() {
             $("#skinCss").remove()
             load("skinCss", "link", { rel: "stylesheet", href: `${baseUrl}/skin${_c.cached.is_dark  ? "-dark" : ""}.css` })
         }
-    }, 500)
+    }, 1000)
 
 
     setInterval(() => {
@@ -151,7 +147,7 @@ function ready() {
             $obj.attr("data-id", 1)
         }
 
-    }, 500)
+    }, 1000)
 
     // 监听ajax的状态
     proxy()
