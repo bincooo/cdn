@@ -1,9 +1,13 @@
 * {
-    cursor: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev7/alist-skin/cursor.ico), auto;
+    cursor: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev8/alist-skin/cursor.ico), auto;
+}
+
+html {
+    font-size: 14px;
 }
 
 body::after {
-    background-image: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev7/alist-skin/background.jpg);
+    background-image: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev8/alist-skin/background.jpg);
     content: "";
     background-repeat: no-repeat;
     background-position: center;
@@ -91,6 +95,10 @@ body::after {
     padding: 0 12px;
 }
 
+.hope-c-PJLV-idaeksS-css {
+    background-color: unset;
+}
+
 .nav.hope-breadcrumb {
     font-size: 14px;
     color: rgb(182, 182, 182);
@@ -112,6 +120,12 @@ body::after {
     font-size: 14px;
 }
 
+.hope-c-PJLV-ibSUzdo-css {
+    border-radius: 0px;
+    color: rgb(182, 182, 182);
+    font-size: 14px;
+}
+
 .body .obj-box a > p {
     font-size: 12px;
 }
@@ -119,6 +133,12 @@ body::after {
 .hope-c-PJLV-ikoJJtX-css:hover, .hope-c-PJLV-ikoJJtX-css[data-hover] {
     transform: unset;
     color: white;
+}
+
+.hope-c-PJLV-ibSUzdo-css:hover, .hope-c-PJLV-ibSUzdo-css[data-hover] {
+    transform: unset;
+    background-color: #84858d12;
+    border-radius: 3px;
 }
 
 .hope-c-PJLV .hope-c-PJLV-ikSuVsl-css {
