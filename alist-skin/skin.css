@@ -1,5 +1,5 @@
 * {
-    cursor: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev12/alist-skin/cursor.ico), auto;
+    cursor: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev13/alist-skin/cursor.ico), auto;
 }
 
 html {
@@ -7,7 +7,7 @@ html {
 }
 
 body::after {
-    background-image: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev12/alist-skin/background.jpg);
+    background-image: url(https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev13/alist-skin/background.jpg);
     content: "";
     background-repeat: no-repeat;
     background-position: center;
@@ -119,10 +119,9 @@ body::after {
     padding-bottom: 50px;
 }
 
-.hope-c-PJLV-ikoJJtX-css {
+.hope-c-PJLV-ibQLacO-css {
     border-radius: 0px;
     color: #565656;
-    font-size: 14px;
 }
 
 .hope-c-PJLV-ibSUzdo-css {
@@ -135,7 +134,7 @@ body::after {
     font-size: 12px;
 }
 
-.hope-c-PJLV-ikoJJtX-css:hover, .hope-c-PJLV-ikoJJtX-css[data-hover] {
+.hope-c-PJLV-ibQLacO-css:hover, .hope-c-PJLV-ibQLacO-css[data-hover] {
     transform: unset;
     color: #000000;
     background-color: #ededed;
