@@ -1,5 +1,5 @@
 const undef = undefined
-const baseUrl = "https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev13/alist-skin"
+const baseUrl = "https://cdn.jsdelivr.net/gh/bincooo/cdn@0.0.26-dev14/alist-skin"
 console.log(location)
 let _c = {
     motto: "书山有路勤为径，学海无崖苦作舟。",
@@ -75,7 +75,7 @@ function load(id, el, props = {}, callback = () => {}) {
 window.onload = function() {
     _c.cached.is_dark = document.body.classList.contains("hope-ui-dark")
     load("skinCss", "link", { rel: "stylesheet", href: `${baseUrl}/skin${_c.cached.is_dark  ? "-dark" : ""}.css` })
-    load(undef, "script", { src: "https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js" }, ready)
+    load(undef, "script", { src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" }, ready)
 }
 
 
