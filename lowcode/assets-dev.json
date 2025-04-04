@@ -1,0 +1,67 @@
+{
+  "packages": [
+    {
+      "package": "lodash",
+      "library": "_",
+      "urls": [
+        "https://g.alicdn.com/platform/c/lodash/4.6.1/lodash.min.js"
+      ]
+    },
+    {
+      "package": "arco-lowcode-materials",
+      "version": "0.1.0",
+      "library": "ArcoLowc",
+      "urls": [
+        "./render/default/view.js",
+        "./render/default/view.css"
+      ],
+      "editUrls": [
+        "./view.js",
+        "./view.css"
+      ],
+      "advancedUrls": {
+        "default": [
+          "./render/default/view.js",
+          "./render/default/view.css"
+        ]
+      },
+      "advancedEditUrls": {}
+    }
+  ],
+  "components": [
+    {
+      "exportName": "ArcoLowcodeMaterialsMeta",
+      "npm": {
+        "package": "arco-lowcode-materials",
+        "version": "0.1.0"
+      },
+      "url": "./meta.js",
+      "urls": {
+        "default": "./meta.js"
+      },
+      "advancedUrls": {
+        "default": [
+          "./meta.js"
+        ]
+      }
+    }
+  ],
+  "sort": {
+    "groupList": [
+      "精选组件",
+      "原子组件"
+    ],
+    "categoryList": [
+      "基础",
+      "通用",
+      "数据输入",
+      "数据显示",
+      "布局"
+    ]
+  },
+  "groupList": [
+    "精选组件",
+    "原子组件"
+  ],
+  "ignoreComponents": {}
+}

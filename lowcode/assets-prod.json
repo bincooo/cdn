@@ -1,0 +1,67 @@
+{
+  "packages": [
+    {
+      "package": "lodash",
+      "library": "_",
+      "urls": [
+        "https://g.alicdn.com/platform/c/lodash/4.6.1/lodash.min.js"
+      ]
+    },
+    {
+      "package": "arco-lowcode-materials",
+      "version": "0.1.0",
+      "library": "ArcoLowc",
+      "urls": [
+        "https://unpkg.com/arco-lowcode-materials@0.1.0/build/lowcode/render/default/view.js",
+        "https://unpkg.com/arco-lowcode-materials@0.1.0/build/lowcode/render/default/view.css"
+      ],
+      "editUrls": [
+        "https://unpkg.com/arco-lowcode-materials@0.1.0/build/lowcode/view.js",
+        "https://unpkg.com/arco-lowcode-materials@0.1.0/build/lowcode/view.css"
+      ],
+      "advancedUrls": {
+        "default": [
+          "https://unpkg.com/arco-lowcode-materials@0.1.0/build/lowcode/render/default/view.js",
+          "https://unpkg.com/arco-lowcode-materials@0.1.0/build/lowcode/render/default/view.css"
+        ]
+      },
+      "advancedEditUrls": {}
+    }
+  ],
+  "components": [
+    {
+      "exportName": "ArcoLowcodeMaterialsMeta",
+      "npm": {
+        "package": "arco-lowcode-materials",
+        "version": "0.1.0"
+      },
+      "url": "https://unpkg.com/arco-lowcode-materials@0.1.0/build/lowcode/meta.js",
+      "urls": {
+        "default": "https://unpkg.com/arco-lowcode-materials@0.1.0/build/lowcode/meta.js"
+      },
+      "advancedUrls": {
+        "default": [
+          "https://unpkg.com/arco-lowcode-materials@0.1.0/build/lowcode/meta.js"
+        ]
+      }
+    }
+  ],
+  "sort": {
+    "groupList": [
+      "精选组件",
+      "原子组件"
+    ],
+    "categoryList": [
+      "基础",
+      "通用",
+      "数据输入",
+      "数据显示",
+      "布局"
+    ]
+  },
+  "groupList": [
+    "精选组件",
+    "原子组件"
+  ],
+  "ignoreComponents": {}
+}
