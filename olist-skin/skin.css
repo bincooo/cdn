@@ -1,0 +1,175 @@
+* {
+    cursor: url(https://jsd.onmicrosoft.cn/gh/bincooo/cdn@0.0.26.meta-3/olist-skin/cursor.ico), auto;
+}
+
+html {
+    font-size: 14px;
+}
+
+body::after {
+    background-image: url(https://jsd.onmicrosoft.cn/gh/bincooo/cdn@0.0.26.meta-3/olist-skin/background.jpg);
+    content: "";
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .06;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* 顶部面板 */
+.header:first-child {
+    height: 180px;
+    border-bottom: 1px dashed #bfbfbf;
+}
+
+/* 头部导航菜单布局 */
+.header:nth-child(2) {
+    position: relative;
+    top: -30px;
+}
+
+/* 头部导航菜单布局 */
+.header:nth-child(2) span {
+    color: rgb(179 179 179);
+    margin: 0px 8px;
+    font-size: 14px;
+}
+
+/* 头部导航菜单鼠标样式 */
+.header:nth-child(2) span[class='menu'] {
+    color: rgb(61 61 61);
+    cursor: pointer;
+}
+
+/* 头部导航菜单鼠标进入颜色 */
+.header:nth-child(2) span[class='menu']:hover {
+    color: rgb(0, 0, 0);
+}
+
+/* 顶部菜单间隔 */
+#menus > div {
+    padding: 0 12px;
+}
+
+/* 顶部背景透明 */
+.hope-c-PJLV-ikaMhsQ-css {
+    background-color: unset !important;
+}
+
+/* 头像 */
+.header .hope-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+/* 视图列表菜单 */
+.header .header-right {
+    position: relative;
+    top: 142px;
+    right: -10px;
+}
+
+/* 头部标签主体布局 */
+.header .title {
+    display: flex;
+    min-height: 55px;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 45px 11px 0;
+}
+
+/* 名称 */
+.header .title > .name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* 座右铭 */
+.header .title > .motto {
+    font-size: 13px;
+}
+
+/* 主体背景色(半透明) */
+.hope-container .hope-c-PJLV-igScBhH-css, .hope-container .hope-c-PJLV-ikSuVsl-css {
+    background-color: #ffffffb5;
+}
+
+/* 右下角工具条背景色 */
+.left-toolbar-box .hope-c-PJLV-ijgzmFG-css {
+    background-color: #fbfcfd91;
+}
+
+/* 面包屑字体大小和颜色 */
+.nav.hope-breadcrumb {
+    font-size: 14px;
+    color: #3b3b3b;
+}
+
+.hope-c-PJLV-idaeksS-css {
+    background-color: unset;
+}
+
+/* 面包屑鼠标进入颜色 */
+.hope-c-PJLV-ibMsOCJ-css:hover, .hope-c-PJLV-ibMsOCJ-css[data-hover]  {
+    background-color: unset;
+    color: #000000;
+}
+
+
+/* 图标颜色 */
+.hope-c-PJLV-ibncvoH-css {
+    border-radius: 0px;
+    color: #565656;
+    font-size: 14px;
+}
+
+.body .obj-box {
+    border-radius: 5px;
+    padding-bottom: 50px;
+}
+
+/* 主体字体大小 */
+.body .obj-box a > p {
+    font-size: 12px;
+}
+
+/* 光标进入类目行 */
+.hope-c-PJLV-ibSUzdo-css:hover, .hope-c-PJLV-ibSUzdo-css[data-hover] {
+    transform: unset;
+    color: #000000;
+    background-color: #84858d12;
+    border-radius: 3px;
+}
+
+/* markdown 字体大小 */
+.markdown-body {
+    font-size: 14px;
+}
+
+/* 按钮样式 */
+.obj-box .hope-stack > button.hope-select__trigger {
+    width: 300px;
+    border-radius: 0;
+    border-color: white;
+    background-color: unset;
+    border-bottom: 1px dashed #a5a5a5;
+    margin-left: 2px;
+    font-size: 14px;
+    color: #515151;
+}
+
+/* 下拉列表样式 */
+.hope-select__content .hope-select__option {
+    font-size: 12px;
+}
