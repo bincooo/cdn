@@ -18,8 +18,8 @@ config = {
         },
         {
             name: "管理",
-            link: "/@manage",
-            method: 1
+            link: "./@manage",
+            method: 0
         },
         {
             name: "IT工具",

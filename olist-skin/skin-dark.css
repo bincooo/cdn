@@ -1,5 +1,5 @@
 * {
-    cursor: url(https://jsd.onmicrosoft.cn/gh/bincooo/cdn@0.0.26.meta-3/olist-skin/cursor.ico), auto;
+    cursor: url(https://jsd.onmicrosoft.cn/gh/bincooo/cdn@0.0.26.meta-4/olist-skin/cursor.ico), auto;
 }
 
 html {
@@ -7,7 +7,7 @@ html {
 }
 
 body::after {
-    background-image: url(https://jsd.onmicrosoft.cn/gh/bincooo/cdn@0.0.26.meta-3/olist-skin/background.jpg);
+    background-image: url(https://jsd.onmicrosoft.cn/gh/bincooo/cdn@0.0.26.meta-4/olist-skin/background.jpg);
     content: "";
     background-repeat: no-repeat;
     background-position: center;
@@ -129,6 +129,13 @@ body::after {
 /* 图标颜色 */
 .hope-c-PJLV-ibncvoH-css {
     border-radius: 0px;
+    color: rgb(182, 182, 182);
+    font-size: 14px;
+}
+
+/* 图标颜色(图片) */
+.hope-c-PJLV-ihxIBrZ-css {
+	border-radius: 0px;
     color: rgb(182, 182, 182);
     font-size: 14px;
 }
