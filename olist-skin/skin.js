@@ -1,6 +1,6 @@
 const undef = undefined
-let version = "0.0.26.meta-5"
-let baseUrl = `${location.origin}/gh/bincooo/cdn@${version}/olist-skin`
+let version = "0.0.26.meta-6"
+let baseUrl = `https://jsd.onmicrosoft.cn/gh/bincooo/cdn@${version}/olist-skin`
 console.log(location)
 let _c = {
     motto: "书山有路勤为径，学海无崖苦作舟。",
@@ -78,7 +78,7 @@ window.onload = function() {
         version = window.config.version
     }
     if (window.config?.baseUrl) {
-        baseUrl = window.config.baseUrl + "/gh/bincooo/cdn@" + version + "/alist-skin"
+        baseUrl = window.config.baseUrl + "/gh/bincooo/cdn@" + version + "/olist-skin"
     }
 
     load(undef, "script", { src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" }, ready)
