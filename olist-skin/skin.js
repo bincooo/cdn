@@ -1,6 +1,6 @@
 const undef = undefined
-let baseUrl = "https://jsd.onmicrosoft.cn/gh/bincooo/cdn@0.0.26.meta-4/olist-skin"
-let version = "0.0.26.meta-4"
+let version = "0.0.26.meta-5"
+let baseUrl = `${location.origin}/gh/bincooo/cdn@${version}/olist-skin`
 console.log(location)
 let _c = {
     motto: "书山有路勤为径，学海无崖苦作舟。",
