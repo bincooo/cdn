@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chunk Parser</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+.content {
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+}
+        
+        .input-section {
+            margin-bottom: 30px;
+        }
+        
+.input-section label {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.result-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+}
+        
+textarea {
+    width: 100%;
+    min-height: 300px;
+    padding: 15px;
+    border: 1px solid #667eea;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    resize: vertical;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    background: linear-gradient(135deg, #fafbff 0%, #f5f7ff 100%);
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #764ba2;
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.35), 0 0 0 3px rgba(118, 75, 162, 0.1);
+}
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .parse-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            flex: 1;
+        }
+        
+        .parse-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .clear-btn {
+            background: #f5f5f5;
+            color: #666;
+        }
+        
+        .clear-btn:hover {
+            background: #e0e0e0;
+        }
+        
+.result-section {
+    margin-top: 30px;
+    padding: 30px;
+}
+        
+        .result-box {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+.result-box h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #667eea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copy-btn {
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    color: #667eea;
+    padding: 4px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    background: rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+}
+
+.result-box.reasoning-box .copy-btn {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: rgba(102, 126, 234, 0.3);
+    color: #667eea;
+}
+
+.result-box.reasoning-box .copy-btn:hover {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+.result-box.content-box h3 {
+    color: #48bb78;
+}
+
+.result-box.content-box .copy-btn {
+    background: rgba(72, 187, 120, 0.1);
+    border-color: rgba(72, 187, 120, 0.3);
+    color: #48bb78;
+}
+
+.result-box.content-box .copy-btn:hover {
+    background: rgba(72, 187, 120, 0.2);
+}
+        
+        .result-box.reasoning-box {
+    border: 1px solid #667eea;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
+        }
+        
+        .result-box.reasoning-box h3 {
+            color: #667eea;
+        }
+        
+.result-box.content-box {
+    border: 1px solid #48bb78;
+    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+}
+        
+        .result-box.content-box h3 {
+            color: #48bb78;
+        }
+        
+.content-result {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #333;
+}
+        
+        .tool-call {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .tool-call-header {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+.tool-call-arguments {
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #555;
+}
+        
+        .empty-state {
+            text-align: center;
+            color: #999;
+            padding: 40px;
+            font-size: 16px;
+        }
+        
+.error {
+    background: #fee;
+    color: #c33;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.CodeMirror {
+    height: 300px;
+    border: 1px solid #667eea;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+.CodeMirror-focused {
+    border-color: #764ba2;
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.35);
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Chunk Parser</h1>
+            <p>解析 v1/chat/completions 流输出的chunk数据</p>
+        </div>
+        
+        <div class="content">
+<div class="input-section">
+    <label>输入chunk数据：</label>
+    <textarea id="chunkInput"></textarea>
+</div>
+                
+                <div class="button-group">
+                    <button class="parse-btn" onclick="parseChunk()">解析Chunk</button>
+                    <button class="clear-btn" onclick="clearAll()">清空</button>
+                </div>
+            </div>
+            
+<div id="errorContainer"></div>
+
+<div class="result-section">
+    <div class="result-title">解析结果</div>
+                <div id="resultContainer">
+                    <div class="empty-state">
+                        请输入chunk数据并点击"解析Chunk"按钮
+                    </div>
+                </div>
+</div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script>
+let editor;
+
+function parseChunk() {
+    const input = editor.getValue().trim();
+    const errorContainer = document.getElementById('errorContainer');
+    const resultContainer = document.getElementById('resultContainer');
+            
+            errorContainer.innerHTML = '';
+            
+            if (!input) {
+                showError('请输入chunk数据');
+                return;
+            }
+            
+            try {
+                const chunks = input.split('\n');
+                let reasoningContent = '';
+                let regularContent = '';
+                const toolCalls = {};
+                
+                chunks.forEach(line => {
+                    line = line.trim();
+                    if (!line) return;
+                    
+                    if (line === 'data: [DONE]') return;
+                    if (line === '[DONE]') return;
+                    
+                    if (line.startsWith('data: ')) {
+                        let jsonStr = line.substring(6);
+                        
+                        try {
+                            const chunk = JSON.parse(jsonStr);
+                            
+                            if (chunk.choices && chunk.choices[0]) {
+                                const delta = chunk.choices[0].delta;
+                                
+                                if (delta.content) {
+                                    regularContent += delta.content;
+                                }
+                                
+                                if (delta.reasoning_content) {
+                                    reasoningContent += delta.reasoning_content;
+                                }
+                                
+                                if (delta.tool_calls) {
+                                    delta.tool_calls.forEach(toolCall => {
+                                        const id = toolCall.id;
+                                        const index = toolCall.index !== undefined ? toolCall.index : 0;
+                                        
+                                        if (!toolCalls[index]) {
+                                            toolCalls[index] = {
+                                                id: id,
+                                                type: toolCall.type,
+                                                function: {
+                                                    name: '',
+                                                    arguments: ''
+                                                }
+                                            };
+                                        } else {
+                                            if (id) toolCalls[index].id = id;
+                                            if (toolCall.type) toolCalls[index].type = toolCall.type;
+                                        }
+                                        
+                                        if (toolCall.function) {
+                                            if (toolCall.function.name) {
+                                                toolCalls[index].function.name += toolCall.function.name;
+                                            }
+                                            if (toolCall.function.arguments) {
+                                                toolCalls[index].function.arguments += toolCall.function.arguments;
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        } catch (e) {
+                            try {
+                                const match = jsonStr.match(/\{"choices":\[\{"finish_reason":null,"index":(\d+),"delta":\{[^}]*"([^"]+)":"([^"]+)"[^}]*\}\}\]/);
+                                if (match) {
+                                    const key = match[2];
+                                    const value = match[3];
+                                    
+                                    if (key === 'content') {
+                                        regularContent += value;
+                                    } else if (key === 'reasoning_content') {
+                                        reasoningContent += value;
+                                    }
+                                }
+                            } catch (e2) {
+                                console.warn('Unable to parse line:', jsonStr, e);
+                            }
+                        }
+                    }
+                });
+                
+                displayResult(reasoningContent, regularContent, toolCalls);
+                
+            } catch (e) {
+                showError('解析失败: ' + e.message);
+            }
+        }
+        
+function displayResult(reasoningContent, regularContent, toolCalls) {
+    const resultContainer = document.getElementById('resultContainer');
+    let html = '';
+    
+    if (reasoningContent) {
+        html += `
+            <div class="result-box reasoning-box">
+                <h3>Reasoning Content:<button class="copy-btn" data-content="${encodeURIComponent(reasoningContent)}">复制</button></h3>
+                <div class="content-result">${escapeHtml(reasoningContent)}</div>
+            </div>
+        `;
+    }
+    
+    if (regularContent) {
+        html += `
+            <div class="result-box content-box">
+                <h3>Content:<button class="copy-btn" data-content="${encodeURIComponent(regularContent)}">复制</button></h3>
+                <div class="content-result">${escapeHtml(regularContent)}</div>
+            </div>
+        `;
+    }
+    
+    const toolCallsArray = Object.values(toolCalls).filter(tc => tc);
+    if (toolCallsArray.length > 0) {
+        const toolCallsJson = JSON.stringify(toolCallsArray, null, 2);
+        html += `
+            <div class="result-box">
+                <h3>Tool Calls:<button class="copy-btn" data-content="${encodeURIComponent(toolCallsJson)}">复制</button></h3>
+                ${toolCallsArray.map(toolCall => `
+                    <div class="tool-call">
+                        <div class="tool-call-header">Function: ${escapeHtml(toolCall.function.name)}</div>
+                        <div class="tool-call-arguments">${escapeHtml(toolCall.function.arguments)}</div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+            
+            if (!html && toolCallsArray.length === 0) {
+                html = `
+                    <div class="empty-state">
+                        未解析到content、reasoning_content或tool_calls内容
+                    </div>
+                `;
+            }
+            
+            resultContainer.innerHTML = html;
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        function showError(message) {
+            const errorContainer = document.getElementById('errorContainer');
+            errorContainer.innerHTML = `
+                <div class="error">
+                    ${escapeHtml(message)}
+                </div>
+            `;
+        }
+        
+function clearAll() {
+    editor.setValue('');
+    document.getElementById('errorContainer').innerHTML = '';
+    document.getElementById('resultContainer').innerHTML = `
+        <div class="empty-state">
+            请输入chunk数据并点击"解析Chunk"按钮
+        </div>
+    `;
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function showError(message) {
+    const errorContainer = document.getElementById('errorContainer');
+    errorContainer.innerHTML = `
+        <div class="error">
+            ${escapeHtml(message)}
+        </div>
+    `;
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = event.target;
+        const originalText = btn.textContent;
+        btn.textContent = '已复制';
+        btn.style.background = 'rgba(72, 187, 120, 0.2)';
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+        }, 1500);
+    }).catch(err => {
+        console.error('复制失败:', err);
+    });
+}
+
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('copy-btn')) {
+        const content = decodeURIComponent(e.target.getAttribute('data-content'));
+        copyToClipboard(content);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    editor = CodeMirror.fromTextArea(document.getElementById('chunkInput'), {
+        lineNumbers: true,
+        mode: 'javascript',
+        theme: 'default',
+        lineWrapping: true
+    });
+});
+</script>
+</body>
+</html>
