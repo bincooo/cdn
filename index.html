@@ -259,6 +259,50 @@ textarea:focus {
     margin-top: 20px;
 }
 
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 25px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 30px;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.back-to-top::before {
+    content: '^';
+    font-weight: bold;
+    opacity: 0.3;
+    transform: scaleX(1.5);
+    display: inline-block;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+}
+
+.back-to-top:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+.back-to-top.show {
+    opacity: 0.6;
+    visibility: visible;
+}
+
 .CodeMirror {
     height: 300px;
     border: 1px solid #667eea;
@@ -305,6 +349,8 @@ textarea:focus {
 </div>
 </div>
 </div>
+
+<button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
@@ -499,25 +545,38 @@ function showError(message) {
     `;
 }
 
-function copyToClipboard(text) {
+function copyToClipboard(text, btn) {
     navigator.clipboard.writeText(text).then(() => {
-        const btn = event.target;
         const originalText = btn.textContent;
         btn.textContent = '已复制';
         btn.style.background = 'rgba(72, 187, 120, 0.2)';
+        btn.style.borderColor = '#48bb78';
+        btn.style.color = '#48bb78';
         setTimeout(() => {
             btn.textContent = originalText;
             btn.style.background = '';
-        }, 1500);
+            btn.style.borderColor = '';
+            btn.style.color = '';
+        }, 2000);
     }).catch(err => {
         console.error('复制失败:', err);
+        btn.textContent = '复制失败';
+        btn.style.background = 'rgba(205, 92, 92, 0.2)';
+        btn.style.borderColor = '#cd5c5c';
+        btn.style.color = '#cd5c5c';
+        setTimeout(() => {
+            btn.textContent = '复制';
+            btn.style.background = '';
+            btn.style.borderColor = '';
+            btn.style.color = '';
+        }, 2000);
     });
 }
 
 document.addEventListener('click', function(e) {
     if (e.target && e.target.classList.contains('copy-btn')) {
         const content = decodeURIComponent(e.target.getAttribute('data-content'));
-        copyToClipboard(content);
+        copyToClipboard(content, e.target);
     }
 });
 
@@ -528,6 +587,15 @@ document.addEventListener('DOMContentLoaded', function() {
         theme: 'default',
         lineWrapping: true
     });
+});
+
+window.addEventListener('scroll', function() {
+    const backToTop = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) {
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
 });
 </script>
 </body>
